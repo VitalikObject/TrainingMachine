@@ -1,14 +1,21 @@
 #pragma once
 
-#include <QtWidgets/qwidget.h>
 #include <QWidget>
 #include <QTableWidget>
-#include <QTableWidgetItem>
 #include <QVBoxLayout>
+#include "InstructionTableView.h"
+#include "InstructionCellHandler.h"
 
 class InstructionTable : public QWidget
 {
-public:
-    InstructionTable(QWidget* parent = nullptr);
-};
+    Q_OBJECT
 
+public:
+    explicit InstructionTable(QWidget* parent = nullptr);
+    ~InstructionTable();
+
+private:
+    InstructionTableView* m_tableView;
+    InstructionCellHandler* m_cellHandler;
+    QVBoxLayout *m_layout;
+};
