@@ -3,6 +3,8 @@
 #include <QMainWindow>
 #include <QtWidgets/qgroupbox.h>
 #include "InstructionTable.h"
+#include <QTextEdit>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +19,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void adjustWindowSize();
+
+private slots:
+    void onRunClicked();
 
 private:
     Ui::MainWindow *m_ui;
@@ -28,4 +32,10 @@ private:
     QVBoxLayout *m_leftLayout;
     QGroupBox *m_rightGroupBox;
     QVBoxLayout *m_rightLayout;
+    QTextEdit *m_inputField;
+    QTextEdit *m_outputField;
+    QPushButton *m_runButton;
+
+    void setupRunButton();
+    QString processInput(const QString &input);
 };
