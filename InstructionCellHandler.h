@@ -8,7 +8,7 @@ class InstructionCellHandler : public QObject
     Q_OBJECT
 
 public:
-    explicit InstructionCellHandler(QTableWidget* table);
+    explicit InstructionCellHandler(QTableWidget &table);
 
 public slots:
     void onCellChanged(int row, int column);
@@ -16,5 +16,5 @@ public slots:
 private:
     bool isValidInstruction(const QString& input);
 
-    QTableWidget* m_table;
+    QTableWidget &m_table;
 };

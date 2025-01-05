@@ -19,6 +19,11 @@ InstructionTableView::InstructionTableView(QWidget* parent)
     initializeTable();
 }
 
+InstructionTableView::~InstructionTableView() {
+    delete m_table;
+    delete m_completer;
+}
+
 void InstructionTableView::initializeTable()
 {
     for (int i = 1; i <= 512; ++i) {

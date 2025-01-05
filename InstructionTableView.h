@@ -11,9 +11,10 @@ class InstructionTableView : public QWidget
 
 public:
     explicit InstructionTableView(QWidget* parent = nullptr);
+    ~InstructionTableView();
     void initializeTable();
 
-    QTableWidget* getTable() const { return m_table; }
+    QTableWidget *getTable() const { return m_table; }
 
 signals:
     void instructionCellChanged(int row, int column);
@@ -24,6 +25,6 @@ private:
     void setAdditionalCells(int row);
     void ensureItemExists(int row, int column, const QString& initialValue = "");
 
-    QTableWidget* m_table;
-    InstructionCompleter* m_completer;
+    QTableWidget *m_table;
+    InstructionCompleter *m_completer;
 };

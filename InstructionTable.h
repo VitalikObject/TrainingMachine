@@ -15,7 +15,7 @@ public:
     ~InstructionTable();
 
 private:
-    InstructionTableView* m_tableView;
-    InstructionCellHandler* m_cellHandler;
+    InstructionTableView *m_tableView;
+    InstructionCellHandler *m_cellHandler;
     QVBoxLayout *m_layout;
 };

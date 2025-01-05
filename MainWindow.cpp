@@ -20,6 +20,13 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete m_ui;
+    delete m_instructionTable;
+    delete m_inputField;
+    delete m_outputField;
+    delete m_runButton;
+    delete m_leftLayout;
+    delete m_rightLayout;
+    delete m_mainLayout;
 }
 
 void MainWindow::setupLayouts()

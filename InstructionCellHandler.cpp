@@ -3,7 +3,7 @@
 #include <QTableWidgetItem>
 #include <QBrush>
 
-InstructionCellHandler::InstructionCellHandler(QTableWidget* table)
+InstructionCellHandler::InstructionCellHandler(QTableWidget &table)
     : m_table(table)
 {
 }
@@ -11,13 +11,13 @@ InstructionCellHandler::InstructionCellHandler(QTableWidget* table)
 void InstructionCellHandler::onCellChanged(int row, int column)
 {
     if (column == 1) {
-        QString input = m_table->item(row, column)->text();
+        QString input = m_table.item(row, column)->text();
         bool isValid = isValidInstruction(input);
 
         if (isValid) {
-            m_table->item(row, column)->setBackground(QBrush(Qt::transparent));
+            m_table.item(row, column)->setBackground(QBrush(Qt::transparent));
         } else {
-            m_table->item(row, column)->setBackground(QBrush(Qt::red));
+            m_table.item(row, column)->setBackground(QBrush(Qt::red));
         }
     }
 }
