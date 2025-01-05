@@ -5,47 +5,53 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , m_ui(new Ui::MainWindow)
     , m_instructionTable(new InstructionTable(this))
-    , m_centralWidget(new QWidget(this))
-    , m_mainLayout(new QHBoxLayout(m_centralWidget))
-    , m_leftGroupBox(new QGroupBox(/*"Instructions",*/ m_centralWidget))
-    , m_leftLayout(new QVBoxLayout(m_leftGroupBox))
-    , m_rightGroupBox(new QGroupBox("", m_centralWidget))
-    , m_rightLayout(new QVBoxLayout(m_rightGroupBox))
-    , m_inputField(new QTextEdit(m_rightGroupBox))
-    , m_outputField(new QTextEdit(m_rightGroupBox))
-    , m_runButton(new QPushButton(m_rightGroupBox))
+    , m_inputField(new QTextEdit(this))
+    , m_outputField(new QTextEdit(this))
+    , m_runButton(new QPushButton(this))
 {
     m_ui->setupUi(this);
 
-    m_leftLayout->addWidget(m_instructionTable);
-    m_leftGroupBox->setLayout(m_leftLayout);
-
-    m_mainLayout->addWidget(m_leftGroupBox);
-
-    m_inputField->setPlaceholderText("Enter input here...");
-    m_outputField->setPlaceholderText("Output will be shown here...");
-    m_outputField->setReadOnly(true);
-
-    m_rightLayout->addWidget(m_inputField);
-    m_rightLayout->addWidget(m_outputField);
-
+    setupLayouts();
+    setupWidgets();
     setupRunButton();
-    m_rightLayout->addWidget(m_runButton);
-
-    m_rightGroupBox->setLayout(m_rightLayout);
-
-    m_mainLayout->addWidget(m_rightGroupBox);
-
-    m_centralWidget->setLayout(m_mainLayout);
-    setCentralWidget(m_centralWidget);
-
-    m_mainLayout->setStretch(0, 1);
-    m_mainLayout->setStretch(1, 1);
+    setupConnections();
 }
 
 MainWindow::~MainWindow()
 {
     delete m_ui;
+}
+
+void MainWindow::setupLayouts()
+{
+    m_mainLayout = new QHBoxLayout;
+
+    m_leftLayout = new QVBoxLayout;
+    m_leftLayout->addWidget(m_instructionTable);
+
+    m_rightLayout = new QVBoxLayout;
+    m_rightLayout->addWidget(m_inputField);
+    m_rightLayout->addWidget(m_outputField);
+    m_rightLayout->addWidget(m_runButton);
+
+    m_mainLayout->addLayout(m_leftLayout);
+    m_mainLayout->addLayout(m_rightLayout);
+
+    setCentralWidget(createCentralWidget());
+}
+
+QWidget* MainWindow::createCentralWidget()
+{
+    QWidget *centralWidget = new QWidget(this);
+    centralWidget->setLayout(m_mainLayout);
+    return centralWidget;
+}
+
+void MainWindow::setupWidgets()
+{
+    m_inputField->setPlaceholderText("Enter input here...");
+    m_outputField->setPlaceholderText("Output will be shown here...");
+    m_outputField->setReadOnly(true);
 }
 
 void MainWindow::setupRunButton()
@@ -56,6 +62,11 @@ void MainWindow::setupRunButton()
     m_runButton->setIconSize(QSize(32, 32));
     m_runButton->setToolTip("Run");
     m_runButton->setFlat(true);
+}
+
+void MainWindow::setupConnections()
+{
+    connect(m_runButton, &QPushButton::clicked, this, &MainWindow::onRunClicked);
 }
 
 void MainWindow::onRunClicked()

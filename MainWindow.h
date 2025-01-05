@@ -24,18 +24,20 @@ private slots:
     void onRunClicked();
 
 private:
+    void setupLayouts();
+    void setupWidgets();
+    void setupRunButton();
+    void setupConnections();
+    QWidget* createCentralWidget();
+
+    QString processInput(const QString &input);
+
     Ui::MainWindow *m_ui;
     InstructionTable *m_instructionTable;
-    QWidget *m_centralWidget;
-    QHBoxLayout *m_mainLayout;
-    QGroupBox *m_leftGroupBox;
-    QVBoxLayout *m_leftLayout;
-    QGroupBox *m_rightGroupBox;
-    QVBoxLayout *m_rightLayout;
     QTextEdit *m_inputField;
     QTextEdit *m_outputField;
     QPushButton *m_runButton;
-
-    void setupRunButton();
-    QString processInput(const QString &input);
+    QVBoxLayout *m_leftLayout;
+    QVBoxLayout *m_rightLayout;
+    QHBoxLayout *m_mainLayout;
 };

@@ -22,7 +22,7 @@ QList<Instruction> Instruction::allInstructions() {
         Instruction("23", "ПМ"),
         Instruction("24", "ПБР"),
         Instruction("25", "ПМР"),
-        Instruction("31", "СТОП"),
+        Instruction("31", "ОСТ"),
         Instruction("06", "ВВМ"),
         Instruction("07", "ВВВ"),
         Instruction("17", "ВВЦ")
