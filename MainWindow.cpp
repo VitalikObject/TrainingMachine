@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , m_ui(new Ui::MainWindow)
     , m_instructionTable(new InstructionTable(this))
+    , m_instructionInterpreter(new InstructionInterpreter(*m_instructionTable))
     , m_inputField(new QTextEdit(this))
     , m_outputField(new QTextEdit(this))
     , m_runButton(new QPushButton(this))
@@ -80,7 +81,9 @@ void MainWindow::onRunClicked()
 {
     QString inputText = m_inputField->toPlainText();
     QString outputText = processInput(inputText);
-    m_outputField->setText(outputText);
+    m_instructionTable->applyChangesAndClearFocus();
+    m_instructionInterpreter->executeProgram();
+    //m_outputField->setText(outputText);
 }
 
 QString MainWindow::processInput(const QString &input)

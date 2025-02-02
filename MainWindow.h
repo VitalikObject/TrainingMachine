@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include <QtWidgets/qgroupbox.h>
+#include "InstructionInterpreter.h"
 #include "InstructionTable.h"
 #include <QTextEdit>
 #include <QPushButton>
@@ -34,6 +35,7 @@ private:
 
     Ui::MainWindow *m_ui;
     InstructionTable *m_instructionTable;
+    InstructionInterpreter *m_instructionInterpreter;
     QTextEdit *m_inputField;
     QTextEdit *m_outputField;
     QPushButton *m_runButton;

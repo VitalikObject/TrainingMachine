@@ -12,7 +12,8 @@ InstructionTable::InstructionTable(QWidget* parent)
     setLayout(m_layout);
 }
 
-InstructionTable::~InstructionTable() {
+InstructionTable::~InstructionTable()
+{
     delete m_layout;
     delete m_tableView;
     delete m_cellHandler;

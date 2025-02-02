@@ -15,6 +15,10 @@ public:
     void initializeTable();
 
     QTableWidget *getTable() const { return m_table; }
+    int getRowCount() const { return m_table->rowCount(); }
+    QList<int> getRowByIndex(int index);
+    void setRowByIndex(int index, const QList<int>& values);
+    void applyChangesAndClearFocus();
 
 signals:
     void instructionCellChanged(int row, int column);

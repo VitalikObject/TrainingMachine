@@ -4,6 +4,7 @@
 #include <QLineEdit>
 #include <QtWidgets/qboxlayout.h>
 #include "Utils.h"
+#include "Instruction.h"
 
 InstructionTableView::InstructionTableView(QWidget* parent)
     : QWidget(parent)
@@ -19,7 +20,8 @@ InstructionTableView::InstructionTableView(QWidget* parent)
     initializeTable();
 }
 
-InstructionTableView::~InstructionTableView() {
+InstructionTableView::~InstructionTableView()
+{
     delete m_table;
     delete m_completer;
 }
@@ -68,3 +70,46 @@ void InstructionTableView::ensureItemExists(int row, int column, const QString& 
         m_table->setItem(row, column, item);
     }
 }
+
+QList<int> InstructionTableView::getRowByIndex(int index)
+{
+    QList<int> rowItems;
+    if (index >= 0 && index < m_table->rowCount()) {
+        for (int col = 0; col < m_table->columnCount(); ++col) {
+            if (col != 1) {
+                rowItems.append(m_table->item(index, col)->text().toInt());
+            } else {
+                auto* widget = m_table->cellWidget(index, col);
+                if (auto* lineEdit = qobject_cast<QLineEdit*>(widget)) {
+                    rowItems.append(Instruction::getCodeNumber(lineEdit->text()));
+                }
+            }
+        }
+    }
+    return rowItems;
+}
+
+void InstructionTableView::setRowByIndex(int index, const QList<int>& values)
+{
+    if (index >= 0 && index < m_table->rowCount() && values.size() == m_table->columnCount() - 1) {
+        for (int col = 1; col < m_table->columnCount(); ++col) {
+            if (col != 1) {
+                m_table->item(index, col)->setText(QString::number(values[col - 1]));
+            } else {
+                auto* widget = m_table->cellWidget(index, col);
+                if (auto* lineEdit = qobject_cast<QLineEdit*>(widget)) {
+                    lineEdit->setText(Instruction::getCodeName(values[col - 1]));
+                }
+            }
+        }
+    }
+}
+
+void InstructionTableView::applyChangesAndClearFocus()
+{
+    if (m_table->currentItem()) {
+        m_table->closePersistentEditor(m_table->currentItem());
+    }
+    m_table->clearFocus();
+}
+

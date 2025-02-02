@@ -12,6 +12,8 @@ public:
     QString name() const { return m_name; }
 
     static QList<Instruction> allInstructions();
+    static int getCodeNumber(const QString& name);
+    static QString getCodeName(int code);
 
 private:
     QString m_code;

@@ -1,6 +1,7 @@
 #include "Instruction.h"
 
-QList<Instruction> Instruction::allInstructions() {
+QList<Instruction> Instruction::allInstructions()
+{
     return QList<Instruction> {
         Instruction("01", "СЛВ"),
         Instruction("11", "СЛЦ"),
@@ -11,7 +12,7 @@ QList<Instruction> Instruction::allInstructions() {
         Instruction("04", "ДЕВ"),
         Instruction("14", "ДЕЦ"),
         Instruction("15", "МОД"),
-        Instruction("10", "ПЕР"),
+        Instruction("00", "ПЕР"),
         Instruction("20", "ЦЕЛ"),
         Instruction("21", "ВЕЩ"),
         Instruction("09", "БЕЗ"),
@@ -28,3 +29,31 @@ QList<Instruction> Instruction::allInstructions() {
         Instruction("17", "ВВЦ")
     };
 }
+
+int Instruction::getCodeNumber(const QString& name)
+{
+    auto instructions = allInstructions();
+
+    for (const Instruction& instruction : instructions) {
+        if (instruction.name() == name) {
+            return instruction.code().toInt();
+        }
+    }
+
+    return -1;
+}
+
+QString Instruction::getCodeName(int code)
+{
+    auto instructions = allInstructions();
+
+    for (const Instruction& instruction : instructions) {
+        if (instruction.code().toInt() == code) {
+            return instruction.name();
+        }
+    }
+
+    return "";
+}
+
+

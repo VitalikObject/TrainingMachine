@@ -30,6 +30,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         InstructionCompleter.h InstructionCompleter.cpp
         InstructionCellHandler.h InstructionCellHandler.cpp
         resources.qrc
+        InstructionInterpreter.h InstructionInterpreter.cpp
 
     )
 # Define target properties for Android with Qt 6 as:
