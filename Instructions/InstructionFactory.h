@@ -6,9 +6,11 @@
 #include "BranchInstruction.h"
 #include "DivideInstruction.h"
 #include "IInstruction.h"
+#include "InputInstruction.h"
 #include "JumpInstruction.h"
 #include "ModuloInstruction.h"
 #include "MultiplyInstruction.h"
+#include "OutputInstruction.h"
 #include "SubtractInstruction.h"
 
 class InstructionFactory {
@@ -41,12 +43,10 @@ public:
             return std::make_unique<AssignmentInstruction>(arg1, arg3);
         case 5:
         case 6:
-            //return std::make_unique<InputInstruction>(arg1, arg2);
-            return nullptr;
+            return std::make_unique<InputInstruction>(arg1, arg2);
         case 15:
         case 16:
-            //return std::make_unique<OutputInstruction>(arg1, arg2);
-            return nullptr;
+            return std::make_unique<OutputInstruction>(arg1, arg2);
         case 9:
             return std::make_unique<JumpInstruction>(arg2);
         case 19:

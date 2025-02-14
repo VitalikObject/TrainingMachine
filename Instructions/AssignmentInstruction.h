@@ -6,11 +6,11 @@
 class AssignmentInstruction : public IInstruction {
 public:
     AssignmentInstruction(int target, int sourceAddress)
-        : targetAddress(target), sourceAddress(sourceAddress) {}
+        : m_targetAddress(target), m_sourceAddress(sourceAddress) {}
 
     virtual int execute(ExecutionContext& context, int currentPC) override;
 
 private:
-    int targetAddress;
-    int sourceAddress;
+    int m_targetAddress;
+    int m_sourceAddress;
 };

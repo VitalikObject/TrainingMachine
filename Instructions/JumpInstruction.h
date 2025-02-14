@@ -6,9 +6,9 @@
 class JumpInstruction : public IInstruction {
 public:
     JumpInstruction(int targetPC)
-        : targetPC(targetPC) {}
+        : m_targetPC(targetPC) {}
 
     virtual int execute(ExecutionContext& context, int /*currentPC*/) override;
 private:
-    int targetPC;
+    int m_targetPC;
 };

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <vector>
 #include "InstructionTable.h"
 
 class Memory {
@@ -11,5 +10,4 @@ public:
 
 private:
     InstructionTable &m_instructionTable;
-    std::vector<int> memory;
 };

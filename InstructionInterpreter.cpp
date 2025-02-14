@@ -4,8 +4,11 @@
 InstructionInterpreter::InstructionInterpreter(InstructionTable& instructionTable)
     : m_instructionTable(instructionTable)
     , m_memory(new Memory(instructionTable))
-    , m_executionContext(new ExecutionContext(*m_memory))
+    , m_streamInterpreter(nullptr)
+    , m_executionContext(nullptr)
 {
+    m_streamInterpreter = new StreamInterpreter();
+    m_executionContext = new ExecutionContext(*m_memory, *m_streamInterpreter);
 }
 
 void InstructionInterpreter::executeProgram()

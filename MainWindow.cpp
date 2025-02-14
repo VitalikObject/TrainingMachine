@@ -79,11 +79,13 @@ void MainWindow::setupConnections()
 
 void MainWindow::onRunClicked()
 {
-    QString inputText = m_inputField->toPlainText();
-    QString outputText = processInput(inputText);
+    std::string inputText = m_inputField->toPlainText().toStdString();
+    m_outputField->clear();
     m_instructionTable->applyChangesAndClearFocus();
+    m_instructionInterpreter->getStreamInterpreter().clear();
+    m_instructionInterpreter->getStreamInterpreter().writeInput(inputText);
     m_instructionInterpreter->executeProgram();
-    //m_outputField->setText(outputText);
+    m_outputField->setText(m_instructionInterpreter->getStreamInterpreter().readOutput());
 }
 
 QString MainWindow::processInput(const QString &input)

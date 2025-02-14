@@ -1,8 +1,8 @@
 #include "MultiplyInstruction.h"
 
 int MultiplyInstruction::execute(ExecutionContext& context, int currentPC) {
-    int result = context.memory.getValue(address2) * context.memory.getValue(address3);
+    int result = context.getMemory().getValue(m_address2) * context.getMemory().getValue(m_address3);
     context.accumulator = result;
-    context.memory.setValue(targetAddress, result);
+    context.getMemory().setValue(m_targetAddress, result);
     return currentPC + 1;
 }

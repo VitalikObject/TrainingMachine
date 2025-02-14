@@ -5,10 +5,10 @@
 class ArithmeticInstruction : public IInstruction {
 public:
     ArithmeticInstruction(int target, int addr2, int addr3)
-        : targetAddress(target), address2(addr2), address3(addr3) {}
+        : m_targetAddress(target), m_address2(addr2), m_address3(addr3) {}
 
 protected:
-    int targetAddress;
-    int address2;
-    int address3;
+    int m_targetAddress;
+    int m_address2;
+    int m_address3;
 };

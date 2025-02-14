@@ -94,7 +94,8 @@ void InstructionTableView::setRowByIndex(int index, const QList<int>& values)
     if (index >= 0 && index < m_table->rowCount() && values.size() == m_table->columnCount() - 1) {
         for (int col = 1; col < m_table->columnCount(); ++col) {
             if (col != 1) {
-                m_table->item(index, col)->setText(QString::number(values[col - 1]));
+                QString formattedValue = QString::number(values[col - 1], 10).rightJustified(3, '0');
+                m_table->item(index, col)->setText(formattedValue);
             } else {
                 auto* widget = m_table->cellWidget(index, col);
                 if (auto* lineEdit = qobject_cast<QLineEdit*>(widget)) {
