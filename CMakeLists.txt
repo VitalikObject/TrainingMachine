@@ -48,6 +48,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         IStreamInterpreter.h
         Instructions/OutputInstruction.h Instructions/OutputInstruction.cpp
         Instructions/InputInstruction.h Instructions/InputInstruction.cpp
+        Instructions/StopInstruction.h
 
     )
 # Define target properties for Android with Qt 6 as:

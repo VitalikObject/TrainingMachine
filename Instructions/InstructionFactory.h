@@ -11,6 +11,7 @@
 #include "ModuloInstruction.h"
 #include "MultiplyInstruction.h"
 #include "OutputInstruction.h"
+#include "StopInstruction.h"
 #include "SubtractInstruction.h"
 
 class InstructionFactory {
@@ -51,6 +52,8 @@ public:
             return std::make_unique<JumpInstruction>(arg2);
         case 19:
             return std::make_unique<BranchInstruction>(arg1, arg2, arg3);
+        case 31:
+            return std::make_unique<StopInstruction>();
         default:
             throw std::invalid_argument("Unknown operation code");
         }
