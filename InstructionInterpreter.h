@@ -3,7 +3,9 @@
 #include <QString>
 #include <QMap>
 #include <QVector>
+#include "ExecutionContext.h"
 #include "InstructionTable.h"
+#include "Memory.h"
 
 class InstructionInterpreter {
 public:
@@ -13,9 +15,9 @@ public:
 
 private:
 
-    QMap<int, int> m_memory;
+    Memory *m_memory;
+    ::ExecutionContext *m_executionContext;
     InstructionTable &m_instructionTable;
 
     void executeInstruction(int opCode, int arg1, int arg2, int arg3);
-    int accumulator;
 };

@@ -31,6 +31,19 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         InstructionCellHandler.h InstructionCellHandler.cpp
         resources.qrc
         InstructionInterpreter.h InstructionInterpreter.cpp
+        Instructions/IInstruction.h
+        Memory.h Memory.cpp
+        ExecutionContext.h
+        Instructions/ArithmeticInstruction.h
+        Instructions/AddInstruction.cpp Instructions/AddInstruction.h
+        Instructions/SubtractInstruction.h Instructions/SubtractInstruction.cpp
+        Instructions/MultiplyInstruction.h Instructions/MultiplyInstruction.cpp
+        Instructions/DivideInstruction.h Instructions/DivideInstruction.cpp
+        Instructions/ModuloInstruction.h Instructions/ModuloInstruction.cpp
+        Instructions/AssignmentInstruction.h Instructions/AssignmentInstruction.cpp
+        Instructions/BranchInstruction.h Instructions/BranchInstruction.cpp
+        Instructions/InstructionFactory.h
+        Instructions/JumpInstruction.h Instructions/JumpInstruction.cpp
 
     )
 # Define target properties for Android with Qt 6 as:
