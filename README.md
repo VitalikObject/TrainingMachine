@@ -23,20 +23,36 @@ The TrainingMachine project follows a modular architecture, consisting of severa
 
 ```
 TrainingMachine/
-├── CMakeLists.txt          # CMake build configuration
-├── ExecutionContext.h      # Context management for execution
-├── IStreamInterpreter.h    # Interface for stream interpreters
-├── Instruction.cpp         # Implementation of instructions
-├── Instruction.h           # Header for instructions
-├── InstructionCellHandler.cpp  # Handles instruction cell logic
-├── MainWindow.cpp          # Main window logic (UI)
-├── MainWindow.h            # Main window header
-├── MainWindow.ui           # UI design (Qt)
-├── Utils.cpp               # Utility functions
-├── Utils.h                 # Utility functions header
-├── main.cpp                # Main application entry
-├── Instructions/           # Directory for specific instruction implementations
-└── icons/                  # Icons for resources
+├── CMakeLists.txt               # CMake build configuration
+├── ExecutionContext.h           # Context management for execution (I/O implementation)
+├── IStreamInterpreter.h         # Interface for stream interpreters (I/O implementation)
+├── Instruction.cpp              # Instructions implementation and refactoring
+├── Instruction.h                # Header for instructions
+├── InstructionCellHandler.cpp   # Handles instruction cell logic (memory safety)
+├── InstructionCellHandler.h     # Header for instruction cell logic (memory safety)
+├── InstructionCompleter.cpp     # Instruction table refactor
+├── InstructionCompleter.h       # Header for instruction table refactor
+├── InstructionInterpreter.cpp   # Handles instruction interpretation (I/O implementation)
+├── InstructionInterpreter.h     # Header for instruction interpreter (I/O implementation)
+├── InstructionTable.cpp         # Add instruction implementation
+├── InstructionTable.h           # Header for instruction table implementation
+├── InstructionTableView.cpp     # Handles instruction table view (I/O implementation)
+├── InstructionTableView.h       # Header for instruction table view (I/O implementation)
+├── LICENSE.txt                  # License added
+├── MainWindow.cpp               # Main window logic (UI, I/O implementation)
+├── MainWindow.h                 # Header for main window (UI)
+├── MainWindow.ui                # Initial UI design (Qt)
+├── Memory.cpp                   # Instructions implementation and refactoring
+├── Memory.h                     # Header for memory-related operations (I/O implementation)
+├── README.md                    # Project documentation and setup instructions
+├── StreamInterpreter.cpp        # Stream interpreter implementation (I/O implementation)
+├── StreamInterpreter.h          # Header for stream interpreter (I/O implementation)
+├── Utils.cpp                    # Utility functions (instruction table refactor)
+├── Utils.h                      # Header for utility functions (instruction table refactor)
+├── main.cpp                     # Main application entry
+├── resources.qrc                # Resource file for icons and other assets
+├── Instructions/                # Directory for specific instruction implementations
+└── icons/                       # Icons for resources
 ```
 
 ## Algorithms and Methods
